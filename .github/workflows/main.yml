@@ -41,4 +41,5 @@ jobs:
           INIT_URL: ${{ secrets.INIT_URL }}
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
+          CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
         run: uv run python main.py
