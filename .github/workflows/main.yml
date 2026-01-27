@@ -24,5 +24,7 @@ jobs:
 
       - name: Run script
         env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
+          INIT_URL: ${{ secrets.INIT_URL }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: uv run python main.py
