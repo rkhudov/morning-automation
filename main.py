@@ -4,9 +4,6 @@ import time
 from datetime import datetime, timedelta
 from playwright.sync_api import sync_playwright
 
-# TODO: move to config
-TIMEDELTA_IN_DAYS = 6
-
 
 def main():
     start_time = time.time()
@@ -15,13 +12,14 @@ def main():
     password = os.getenv("PASSWORD")
     init_url = os.getenv("INIT_URL")
     config = json.loads(os.getenv("CONFIG_JSON"))
+    timedelta_in_days = int(os.getenv("TIMEDELTA_IN_DAYS"))
 
     today = datetime.today()
     day_of_the_week = today.strftime("%A")
     print(f"Today is: {today}")
     print(f"Day of the week: {day_of_the_week}")
 
-    class_date = (today + timedelta(days=TIMEDELTA_IN_DAYS))
+    class_date = (today + timedelta(days=timedelta_in_days))
 
     class_date_format_1 = class_date.strftime("%Y-%m-%d")
     class_date_format_2 = class_date.strftime("%-d %b %Y")
