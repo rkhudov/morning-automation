@@ -29,7 +29,7 @@ def main():
 
     print(f"Date: {class_date_format_1}; {class_date_format_2}; {class_date_format_3}")
 
-    classnames = config["day_of_the_week"]
+    classnames = config[day_of_the_week]
     for classname in classnames:
         print(f"Classname: {classname}")
 
