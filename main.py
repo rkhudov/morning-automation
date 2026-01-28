@@ -62,6 +62,8 @@ def main():
 
                     page.click(f"ul:has-text('{class_date_format_2}') div.MuiGrid-root:has-text('{class_date_format_3}') div:has-text('{classname}') button:has-text('Book')")
 
+                    time.sleep(3)
+
                     browser.close()
 
     finish_time = time.time()
