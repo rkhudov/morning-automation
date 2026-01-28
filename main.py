@@ -54,7 +54,7 @@ def main():
 
                     page.wait_for_selector("button[value='1']")
 
-                    # page.click("button[value='1']")
+                    page.click("button[value='1']")
 
                     page.click(f"button[value='{class_date_format_1}']")
 
