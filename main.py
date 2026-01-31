@@ -13,6 +13,7 @@ def main():
     init_url = os.getenv("INIT_URL")
     config = json.loads(os.getenv("CONFIG_JSON"))
     timedelta_in_days = int(os.getenv("TIMEDELTA_IN_DAYS"))
+    open_time = datetime.strptime(os.getenv("OPEN_TIME"), "%H:%M").time()
 
     today = datetime.today()
     day_of_the_week = today.strftime("%A")
@@ -33,6 +34,14 @@ def main():
 
         for hour in classnames[classname]:
             print(f"Hour: {hour}")
+
+            now = datetime.now()
+            target = datetime.combine(now.date(), open_time)
+            if now < target:
+                seconds_to_wait = (target - now).total_seconds()
+                print(f"Current datetime: {now}")
+                print(f"Waiting: {seconds_to_wait}")
+                time.sleep(seconds_to_wait)
 
             with sync_playwright() as p:
                 for browser_type in [p.chromium]:
@@ -60,7 +69,7 @@ def main():
 
                     page.wait_for_selector(f"ul:has-text('{class_date_format_2}') div.MuiGrid-root:has-text('{class_date_format_3}') div:has-text('{classname}') button:has-text('Book')")
 
-                    page.click(f"ul:has-text('{class_date_format_2}') div.MuiGrid-root:has-text('{class_date_format_3}') div:has-text('{classname}') button:has-text('Book')")
+                    page.click(f"ul:has-text('{class_date_format_2}') div.MuiGrid-root:has-text('{class_date_format_3}') div.MuiGrid-root:has-text('{hour}') MuiGrid-item div:has-text('{classname}') button:has-text('Book')")
 
                     time.sleep(3)
 
