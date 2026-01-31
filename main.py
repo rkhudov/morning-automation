@@ -70,6 +70,7 @@ def main():
                     page.wait_for_selector(f"ul:has-text('{class_date_format_2}') div.MuiGrid-root:has-text('{class_date_format_3}') div:has-text('{classname}') button:has-text('Book')")
 
                     page.click(f"ul:has-text('{class_date_format_2}') div.MuiGrid-root:has-text('{class_date_format_3}') div.MuiGrid-root:has-text('{hour}') MuiGrid-item div:has-text('{classname}') button:has-text('Book')")
+                    print(f"Button pressed at {datetime.now()}")
 
                     time.sleep(3)
 
