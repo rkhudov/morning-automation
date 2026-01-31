@@ -59,13 +59,7 @@ def main():
 
                     page.click(f"button[value='{class_date_format_1}']")
 
-                    page.wait_for_selector(
-                        f"ul:has-text('{class_date_format_2}') "
-                        f"div.MuiGrid-root:has(:text('{class_date_format_3}'))"
-                        f":has(:text('{hour}'))"
-                        f":has(:text('{classname}')) "
-                        f"button:has-text('Book')"
-                    )
+                    page.wait_for_selector(f"ul:has-text('{class_date_format_2}') div.container:has-text('{class_date_format_3}') div.MuiGrid-root.MuiGrid-container:has-text('{classname}') div.MuiPaper-root:has-text('{hour}') button:has-text('Book')")
 
                     now = datetime.now()
                     target = datetime.combine(now.date(), open_time)
@@ -76,13 +70,7 @@ def main():
                         time.sleep(seconds_to_wait)
 
                     print(f"Button pressed at {datetime.now()}")
-                    page.click(
-                        f"ul:has-text('{class_date_format_2}') "
-                        f"div.MuiGrid-root:has(:text('{class_date_format_3}'))"
-                        f":has(:text('{hour}'))"
-                        f":has(:text('{classname}')) "
-                        f"button:has-text('Book')"
-                    )
+                    page.click(f"ul:has-text('{class_date_format_2}') div.container:has-text('{class_date_format_3}') div.MuiGrid-root.MuiGrid-container:has-text('{classname}') div.MuiPaper-root:has-text('{hour}') button:has-text('Book')")
 
                     time.sleep(3)
 
