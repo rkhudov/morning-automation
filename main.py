@@ -35,14 +35,6 @@ def main():
         for hour in classnames[classname]:
             print(f"Hour: {hour}")
 
-            now = datetime.now()
-            target = datetime.combine(now.date(), open_time)
-            if now < target:
-                seconds_to_wait = (target - now).total_seconds()
-                print(f"Current datetime: {now}")
-                print(f"Waiting: {seconds_to_wait}")
-                time.sleep(seconds_to_wait)
-
             with sync_playwright() as p:
                 for browser_type in [p.chromium]:
                     browser = browser_type.launch()
@@ -74,6 +66,14 @@ def main():
                         f":has(:text('{classname}')) "
                         f"button:has-text('Book')"
                     )
+
+                    now = datetime.now()
+                    target = datetime.combine(now.date(), open_time)
+                    if now < target:
+                        seconds_to_wait = (target - now).total_seconds()
+                        print(f"Current datetime: {now}")
+                        print(f"Waiting: {seconds_to_wait}")
+                        time.sleep(seconds_to_wait)
 
                     print(f"Button pressed at {datetime.now()}")
                     page.click(
