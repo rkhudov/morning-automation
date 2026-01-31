@@ -48,4 +48,5 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           CONFIG_JSON: ${{ vars.CONFIG_JSON }}
           TIMEDELTA_IN_DAYS: ${{ vars.TIMEDELTA_IN_DAYS }}
+          OPEN_TIME: ${{ vars.OPEN_TIME }}
         run: uv run python main.py
